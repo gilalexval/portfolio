@@ -437,7 +437,17 @@
       display: block;
     }
 
-    .project-card::before {
+    .project-card.wip::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent3), transparent);
+      opacity: 0;
+      transition: opacity 0.25s;
+    }
+
+    .project-card.live::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
@@ -456,10 +466,10 @@
       opacity: 1;
     }
 
-    .project-card.wip::before {
-      background: linear-gradient(90deg, var(--accent3), transparent);
+    /*.project-card.wip::before {
+      background: linear-gradient(90deg, var(--accent), transparent);
       opacity: 0.6;
-    }
+    }*/
 
     .project-status {
       font-family: var(--mono);
@@ -788,7 +798,7 @@
       <div class="projects-grid">
 
         <!-- Project 1 -->
-        <div class="project-card">
+        <div class="project-card wip">
           <div class="project-status wip">
             <span class="status-dot"></span> In Development
           </div>
@@ -822,7 +832,7 @@
         </div>
 
         <!-- Commissioning System — anchor case study -->
-        <div class="project-card" style="grid-column: span 2; border-color: rgba(232,255,71,0.15);">
+        <div class="project-card live" style="border-color: rgba(232,255,71,0.15);">
           <div style="display:grid; grid-template-columns:1fr auto; gap:24px; align-items:start;">
             <div>
               <div class="project-status live" style="margin-bottom:16px;">
